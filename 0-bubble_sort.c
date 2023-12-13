@@ -23,16 +23,21 @@ static void swap(int *array, int i, int j)
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
+	int swapped;
 
 	for (i = 0; i < size; ++i)
 	{
+		swapped = FALSE;
 		for (j = 0; j < size - i - 1; ++j)
 		{
 			if (array[j] > array[j + 1])
 			{
 				swap(array, j, j + 1);
+				swapped = TRUE;
 				print_array(array, size);
 			}
 		}
+		if (!swapped)
+			break;
 	}
 }
