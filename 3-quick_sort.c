@@ -1,7 +1,7 @@
 #include "sort.h"
 
-size_t partition(int *array, size_t lo, size_t hi, size_t size);
-void qsort(int *array, size_t lo, size_t hi, size_t size);
+long int partition(int *array, long int lo, long int hi, size_t size);
+void qsort(int *array, long int lo, long int hi, size_t size);
 /**
  * quick_sort - sorts an array of integers in ascending order
  * using the Quick sort algorithm
@@ -10,7 +10,7 @@ void qsort(int *array, size_t lo, size_t hi, size_t size);
  */
 void quick_sort(int *array, size_t size)
 {
-	qsort(array, 0, size - 1, size);
+	qsort(array, 0, (long int)size - 1, size);
 }
 /**
  * partition - quick sort partition routine
@@ -20,18 +20,18 @@ void quick_sort(int *array, size_t size)
  * @size: array size
  * Return: pivot index
  */
-size_t partition(int *array, size_t lo, size_t hi, size_t size)
+long int partition(int *array, long int lo, long int hi, size_t size)
 {
 	int pivot = array[hi], temp;
-	long int i = (long int)lo - 1;
-	size_t j;
+	long int i = lo - 1;
+	long int j;
 
 	for (j = lo; j <= hi; ++j)
 	{
 		if (array[j] < pivot)
 		{
 			i++;
-			if (i != (long int)j)
+			if (i != j)
 			{
 				temp = array[i];
 				array[i] = array[j];
@@ -41,7 +41,7 @@ size_t partition(int *array, size_t lo, size_t hi, size_t size)
 		}
 	}
 	i++;
-	if (i != (long int)hi)
+	if (i != hi)
 	{
 		temp = array[i];
 		array[i] = array[hi];
@@ -57,9 +57,9 @@ size_t partition(int *array, size_t lo, size_t hi, size_t size)
  * @hi: hi index
  * @size: qrray size
  */
-void qsort(int *array, size_t lo, size_t hi, size_t size)
+void qsort(int *array, long int lo, long int hi, size_t size)
 {
-	size_t p;
+	long int p;
 
 	if (lo < hi)
 	{
