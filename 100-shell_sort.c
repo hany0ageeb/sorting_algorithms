@@ -13,7 +13,7 @@ void shell_sort(int *array, size_t size)
 
 	while (h < size / 3)
 		h = 3 * h + 1;
-	while (h >= 1)
+	while (h > 0)
 	{
 		for (i = h; i < size; ++i)
 		{
@@ -24,7 +24,7 @@ void shell_sort(int *array, size_t size)
 				array[j - h] = temp;
 			}
 		}
-		h /= 3;
+		h = (h - 1) / 3;
 		print_array(array, size);
 	}
 }
