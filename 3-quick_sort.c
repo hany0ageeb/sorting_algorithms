@@ -61,7 +61,7 @@ void qsort(int *array, long int lo, long int hi, size_t size)
 {
 	long int p;
 
-	if (lo < hi && hi < size && lo >= 0)
+	if (lo < hi && hi < (long int)size && lo >= 0 && hi >= 0)
 	{
 		p = partition(array, lo, hi, size);
 		qsort(array, lo, p - 1, size);
