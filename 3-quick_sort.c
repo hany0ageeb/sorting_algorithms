@@ -48,7 +48,7 @@ long int partition(int *array, long int lo, long int hi, size_t size)
 		array[hi] = temp;
 		print_array(array, size);
 	}
-	return ((size_t)i);
+	return (i);
 }
 /**
  * qsort - sort array using quick sort
@@ -64,9 +64,7 @@ void qsort(int *array, long int lo, long int hi, size_t size)
 	if (lo < hi)
 	{
 		p = partition(array, lo, hi, size);
-		if (p > 0)
-			qsort(array, lo, p - 1, size);
-		if (p < hi)
-			qsort(array, p + 1, hi, size);
+		qsort(array, lo, p - 1, size);
+		qsort(array, p + 1, hi, size);
 	}
 }
