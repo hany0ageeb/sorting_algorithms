@@ -1,5 +1,6 @@
 #include "sort.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void msort(int *array, long int lo, long int hi, int *temp_array);
 void merge(int *array, long int lo, long int hi, long int mid,
@@ -54,10 +55,26 @@ void merge(int *array, long int lo, long int hi, long int mid, int *temp_array)
 	long int n1 = mid - lo + 1;
 	long int n2 = n1 + (hi - mid);
 
+	printf("Merging...\n");
+	printf("[left]: ");
 	for (i = 0; i < n1; ++i)
+	{
 		temp_array[i] = array[lo + i];
+		if (i < (n1 - 1))
+			printf("%d, ", temp_array[i]);
+		else
+			printf("%d\n", temp_array[i]);
+	}
+	printf("[right]: ");
 	for (j = n1, temp = 1; j < n2; ++j, ++temp)
+	{
 		temp_array[j] = array[mid + temp];
+		if (j < (n2 - 1))
+			printf("%d, ", temp_array[j]);
+		else
+			printf("%d\n", temp_array[j]);
+	}
+	printf("[Done]: ");
 	for (k = lo, i = 0, j = n1; i < n1 && j < n2; k++)
 	{
 		if (temp_array[i] <= temp_array[j])
@@ -70,9 +87,25 @@ void merge(int *array, long int lo, long int hi, long int mid, int *temp_array)
 			array[k] = temp_array[j];
 			j++;
 		}
+		if (k < hi)
+			printf("%d, ", array[k]);
+		else
+			printf("%d\n", array[k]);
 	}
 	for (; i < n1; ++i, ++k)
+	{
 		array[k] = temp_array[i];
+		if (k < hi)
+			printf("%d, ", array[k]);
+		else
+			printf("%d\n", array[k]);
+	}
 	for (; j < n2; ++j, ++k)
+	{
 		array[k] = temp_array[j];
+		if (k < hi)
+			printf("%d, ", array[k]);
+		else
+			printf("%d\n", array[k]);
+	}
 }
