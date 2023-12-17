@@ -10,6 +10,8 @@ void qsort(int *array, long int lo, long int hi, size_t size);
  */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size <= 1)
+		return;
 	qsort(array, 0, (long int)size - 1, size);
 }
 /**
