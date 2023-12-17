@@ -44,6 +44,11 @@ void counting_sort(int *array, size_t size)
 
 	if (count_array == NULL)
 		return;
+	if (array == NULL || size <= 1)
+	{
+		free(count_array);
+		return;
+	}
 	output_array = malloc(sizeof(int) * size);
 	if (output_array == NULL)
 	{
