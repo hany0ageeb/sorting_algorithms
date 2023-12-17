@@ -37,18 +37,20 @@ void init_array(int *array, size_t size, int value)
  */
 void counting_sort(int *array, size_t size)
 {
-	int k = max(array, size), j;
+	int k, j;
 	int *output_array = NULL;
-	int *count_array = malloc(sizeof(int) * (k + 1));
+	int *count_array = NULL;
 	size_t i;
 
-	if (count_array == NULL)
-		return;
 	if (array == NULL || size <= 1)
 	{
 		free(count_array);
 		return;
 	}
+	k = max(array, size);
+	count_array = malloc(sizeof(int) * (k + 1));
+	if (count_array == NULL)
+		return;
 	output_array = malloc(sizeof(int) * size);
 	if (output_array == NULL)
 	{
