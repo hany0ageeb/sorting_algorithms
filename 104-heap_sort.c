@@ -18,9 +18,12 @@ void heap_sort(int *array, size_t size)
 		heapify(array, root, (long int)size, size);
 	for (i = (long int)size - 1; i >= 0; --i)
 	{
-		swap(&array[0], &array[i]);
-		print_array(array, size);
-		heapify(array, 0, i, size);
+		if (array[0] != array[i])
+		{
+			swap(&array[0], &array[i]);
+			print_array(array, size);
+			heapify(array, 0, i, size);
+		}
 	}
 }
 /**
@@ -52,7 +55,7 @@ void heapify(int *array, long int root, long int end, size_t size)
 		largest = left;
 	if (right < end && array[right] > array[largest])
 		largest = right;
-	if (largest != root)
+	if (largest != root && array[root] != array[largest])
 	{
 		swap(&array[root], &array[largest]);
 		print_array(array, size);
