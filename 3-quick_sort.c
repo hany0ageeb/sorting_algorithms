@@ -33,7 +33,7 @@ long int partition(int *array, long int lo, long int hi, size_t size)
 		if (array[j] < pivot)
 		{
 			i++;
-			if (i != j)
+			if (i != j && array[i] != array[j])
 			{
 				temp = array[i];
 				array[i] = array[j];
@@ -43,7 +43,7 @@ long int partition(int *array, long int lo, long int hi, size_t size)
 		}
 	}
 	i++;
-	if (i != hi)
+	if (i != hi && array[i] != array[hi])
 	{
 		temp = array[i];
 		array[i] = array[hi];
